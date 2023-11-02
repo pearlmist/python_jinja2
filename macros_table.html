@@ -1,0 +1,30 @@
+{% macro render_table(list2, start, finish) %}
+    <table>
+        <tr>
+            {% for key in list2[0].keys() %}
+            <td>{{key}}</td>
+            {% endfor %}
+        </tr>
+        {% if finish < start or start < 0 or finish < 0 or start > list2|length or finish > list2|length%}
+            {% for i in range(0, list2|length)%}
+            <tr>
+                {% for key, item in list2[i].items() %}
+                <td>
+                    {{item}}
+                </td>
+                {% endfor %}
+            {% endfor %}
+            </tr>
+        {% else %}
+        {% for i in range(start - 1, finish) %}
+        <tr>
+            {% for key, item in list2[i].items() %}
+            <td>
+                {{item}}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+{% endmacro %}

@@ -1,0 +1,8 @@
+{% macro render_list(name, list, num) %}
+    {% for key, item in list.items() %}
+    <label>
+        <input type="radio" name="{{name}}" value="{{item}}" {% if key == num %}checked{% endif %}>{{item}}
+    </label>
+    <br>
+    {% endfor %}
+{% endmacro %}
